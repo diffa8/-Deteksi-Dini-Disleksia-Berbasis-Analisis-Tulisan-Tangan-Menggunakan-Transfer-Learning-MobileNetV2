@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Tentang Kami - LitScan{% endblock %}
+
+{% block content %}
+<div class="centered-form-wrapper" style="padding-top: 3rem; padding-bottom: 3rem;">
+  <div class="container animate-enter" style="display: flex; flex-direction: column; align-items: center;">
+    
+    <div class="title-cute fade-in-down" style="text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: bold; color: #246B84;">
+      Mengenal LitScan
+    </div>
+
+    <div class="card-cute fade-in-up" style="max-width: 500px; width: 100%; padding: 2.5rem 2rem;">
+      
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <i class="fa-solid fa-microchip" style="font-size: 2.5rem; color: #2C86A8; margin-bottom: 0.8rem;"></i>
+        <h3 style="color: #246B84; font-size: 1.2rem;">Teknologi Pendidikan</h3>
+        
+        <p style="color: #2F3E46; font-size: 0.95rem; line-height: 1.6;">
+          LitScan merupakan aplikasi edukasi yang membantu orang tua dan guru mengenali gejala disleksia melalui analisis pola tulisan tangan anak.
+        </p>
+      </div>
+
+      <hr style="border: 0; border-top: 1px dashed #E9DDD2; margin: 1.5rem 0;">
+
+      <h3 style="color: #246B84; font-size: 1.1rem; margin-bottom: 1.2rem; text-align: center;">Cara Kerja</h3>
+      
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        
+        <div style="display: flex; align-items: center; gap: 1rem; background: #f9f9f9; padding: 12px; border-radius: 12px;">
+          <div style="background: #e3f2fd; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #2C86A8; flex-shrink: 0;">
+            <i class="fa-solid fa-camera"></i>
+          </div>
+          <div>
+            <strong style="font-size: 0.9rem; color: #2F3E46;">1. Upload Foto</strong>
+            <div style="font-size: 0.8rem; color: #6B8A95;">Unggah foto tulisan tangan anak.</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem; background: #f9f9f9; padding: 12px; border-radius: 12px;">
+          <div style="background: #e8f5e9; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #2e7d32; flex-shrink: 0;">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <div>
+            <strong style="font-size: 0.9rem; color: #2F3E46;">2. Analisis AI</strong>
+            <div style="font-size: 0.8rem; color: #6B8A95;">Sistem membaca pola huruf.</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem; background: #f9f9f9; padding: 12px; border-radius: 12px;">
+          <div style="background: #fff3e0; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ef6c00; flex-shrink: 0;">
+            <i class="fa-solid fa-file-medical"></i>
+          </div>
+          <div>
+            <strong style="font-size: 0.9rem; color: #2F3E46;">3. Hasil Instan</strong>
+            <div style="font-size: 0.8rem; color: #6B8A95;">Hasil prediksi keluar seketika.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

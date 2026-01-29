@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Masuk - LitScan{% endblock %}
+
+{% block content %}
+<div class="centered-form-wrapper" style="min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 2rem;">
+  
+  <div class="container animate-enter" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+    
+    <div class="title-cute fade-in-down" style="text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: bold; color: #246B84;">
+      Masuk ke LitScan
+    </div>
+
+    <div class="card-cute fade-in-up" style="max-width: 450px; width: 100%; margin: 0 auto; padding: 2rem;">
+      
+      <form method="post" class="form-cute" autocomplete="off">
+        
+        <label for="email" style="display: block; text-align: left; margin-bottom: 5px; font-size: 0.9rem; font-weight: bold; color: #556B75;">Email</label>
+        <input type="email" name="email" id="email" placeholder="Masukkan email..." required style="width: 100%; padding: 10px; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;">
+        
+        <label for="password" style="display: block; text-align: left; margin-bottom: 5px; font-size: 0.9rem; font-weight: bold; color: #556B75;">Password</label>
+        <input type="password" name="password" id="password" placeholder="Masukkan password..." required style="width: 100%; padding: 10px; margin-bottom: 1.5rem; border: 1px solid #ddd; border-radius: 8px;">
+        
+        <div style="text-align:center;">
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem;">Masuk</button>
+        </div>
+      </form>
+
+      <div class="form-link-bottom" style="margin-top: 1.5rem; font-size: 0.9rem; text-align: center;">
+        Belum punya akun? <a href="{{ url_for('daftar') }}" style="color: #2C86A8; font-weight: bold;">Daftar sekarang</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
