@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Deteksi Disleksia{% endblock %}
+
+{% block content %}
+<div class="centered-form-wrapper" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; padding-top: 2rem; padding-bottom: 3rem;">
+  
+  <div class="title-cute fade-in-down" style="text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: bold; color: #246B84; max-width: 600px; line-height: 1.4;">
+    Deteksi Disleksia dari Foto Tulisan Anak
+  </div>
+
+  <div class="card-cute fade-in-up" style="width: 100%; max-width: 500px; margin: 0 auto; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+    
+    <form method="post" enctype="multipart/form-data" class="form-cute" autocomplete="off">
+      <label for="nama_anak" style="font-size: 0.9rem;">Nama Anak</label>
+      <input type="text" name="nama_anak" id="nama_anak" value="{{ nama_anak or '' }}" required placeholder="Nama anak..." style="width: 100%; padding: 10px; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;">
+      
+      <label for="foto" style="margin-top: 10px; font-size: 0.9rem;">Pilih Foto Tulisan (JPG/PNG)</label>
+      <input type="file" name="foto" id="foto" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 1.5rem;">
+      
+      <div style="text-align:center;">
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem; background-color: #246B84; color: white; border: none; border-radius: 8px; cursor: pointer;">
+           Mulai Deteksi
+        </button>
+      </div>
+    </form>
+
+    {% if hasil %}
+      <div style="margin-top: 2rem; padding-top: 1rem; border-top: 2px dashed #ddd; text-align: center;">
+        
+        <h3 style="color: #2C86A8; margin-bottom: 1rem; font-size: 1.3rem;">Hasil Deteksi</h3>
+        
+        <div style="margin-bottom: 1rem;">
+           <img src="{{ url_for('static', filename='uploads/' ~ filename) }}" alt="Hasil" style="max-height: 200px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        </div>
+
+        <p style="font-size: 0.95rem; margin-bottom: 10px;">
+           Nama Anak: <b>{{ nama_anak }}</b><br>
+           Tanggal: <small>{{ tanggal }}</small>
+        </p>
+
+        <div style="margin-bottom: 1rem;">
+            {% if "Terdeteksi" in hasil %}
+              <span style="background: #ffebee; color: #c62828; padding: 10px 20px; border-radius: 20px; font-weight: bold; font-size: 1rem; border: 1px solid #ffcdd2;">
+                  ⚠️ {{ hasil }}
+              </span>
+            {% else %}
+              <span style="background: #e8f5e9; color: #2e7d32; padding: 10px 20px; border-radius: 20px; font-weight: bold; font-size: 1rem; border: 1px solid #c8e6c9;">
+                  ✅ {{ hasil }}
+              </span>
+            {% endif %}
+        </div>
+
+        {% if confidence is not none %}
+          <p style="font-size: 0.85rem; color: #666;">Nilai Kepercayaan: <b>{{ confidence }} %</b></p>
+        {% endif %}
+
+        <div style="margin-top: 2rem; text-align: left; background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border: 1px solid #e9ecef;">
+          <h4 style="color: #246B84; margin-bottom: 0.8rem; font-size: 1.1rem;">
+            <i class="fa-solid fa-lightbulb" style="color: #fbc02d;"></i> Saran untuk Orang Tua:
+          </h4>
+          
+          <ul style="font-size: 0.9rem; color: #556B75; line-height: 1.6; padding-left: 1.2rem;">
+            {% if "Terdeteksi" in hasil %}
+              <li style="margin-bottom: 8px;">Jangan panik. Disleksia bukan penyakit, tapi perbedaan cara belajar.</li>
+              <li style="margin-bottom: 8px;">Gunakan <strong>Metode Multisensori</strong> (belajar sambil meraba pasir atau huruf balok).</li>
+              <li style="margin-bottom: 8px;">Bacakan buku cerita setiap hari untuk memperkaya kosakata anak.</li>
+              <li>Konsultasikan dengan ahli terapi untuk pendampingan lebih lanjut.</li>
+            {% else %}
+              <li style="margin-bottom: 8px;">Terus dampingi anak saat belajar menulis dan membaca secara rutin.</li>
+              <li style="margin-bottom: 8px;">Berikan pujian atas setiap kemajuan kecil yang mereka capai.</li>
+              <li>Pastikan suasana belajar di rumah tetap menyenangkan dan tanpa tekanan.</li>
+            {% endif %}
+          </ul>
+        </div>
+        <div style="margin-top: 1.5rem;">
+           <a href="{{ url_for('riwayat') }}" style="color: #2C86A8; font-weight: bold; font-size: 0.9rem; text-decoration: none;">Lihat Riwayat Tes</a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

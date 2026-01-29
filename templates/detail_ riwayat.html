@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Detail Riwayat - LitScan{% endblock %}
+
+{% block content %}
+<div class="centered-form-wrapper">
+  <div class="container animate-enter">
+    
+    <div class="title-cute fade-in-down">Detail Deteksi</div>
+
+    <div class="card-cute fade-in-up" style="max-width: 600px;">
+      {% if data %}
+        <div class="card-icon-header">
+           <i class="fa-solid fa-file-medical"></i>
+        </div>
+
+        <div style="text-align: left; margin-bottom: 2rem;">
+            <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #f0f0f0;">
+                <label style="font-size: 0.85rem; color: var(--muted);">Nama Anak</label>
+                <div style="font-size: 1.2rem; font-weight: 700; color: var(--text);">{{ data.nama_anak }}</div>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <label style="font-size: 0.85rem; color: var(--muted); display: block; margin-bottom: 0.5rem;">Status</label>
+                {% if 'Terdeteksi' in data.status or data.status == 'terdeteksi' %}
+                   <span style="background: #ffebee; color: #c62828; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700;">
+                     <i class="fa-solid fa-triangle-exclamation"></i> Terdeteksi Disleksia
+                   </span>
+                {% else %}
+                   <span style="background: #e8f5e9; color: #2e7d32; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700;">
+                     <i class="fa-solid fa-check-circle"></i> Normal
+                   </span>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if data.gambar %}
+          <div style="margin-bottom: 2rem; text-align: center;">
+             <img src="{{ url_for('static', filename='img/' ~ data.gambar) }}" alt="Tulisan Anak" style="max-width: 100%; border-radius: 12px; box-shadow: var(--shadow-soft);">
+          </div>
+        {% endif %}
+
+        <div class="actions">
+            <a href="{{ url_for('riwayat') }}" class="btn btn-primary">Kembali ke Riwayat</a>
+        </div>
+
+      {% else %}
+        <div style="text-align: center;">
+            <p>Data tidak ditemukan.</p>
+            <a href="{{ url_for('riwayat') }}" class="btn btn-ghost">Kembali</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
